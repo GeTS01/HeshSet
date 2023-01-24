@@ -17,9 +17,6 @@ public class HashSetImpl<K, V> implements Set<K> {
     @Override
     public boolean contains(Object o) {
         return map.containsKey(o);
-
-
-
     }
 
     @Override
