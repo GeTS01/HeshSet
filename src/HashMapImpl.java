@@ -1,14 +1,16 @@
+import org.w3c.dom.Node;
+
 import java.util.*;
 
-public class HashMapImpl <K, V> implements Map<K, V> {
+public class HashMapImpl<K, V> implements Map<K, V> {
 
-    NodeHashMap<K, V>[] table = new NodeHashMap[10];
-    int count = 0;
+    private NodeHashMap<K, V>[] table = new NodeHashMap[10];
+    private int count = 0;
 
     /**
      * this method returns the number of elements
      *
-     * @return amount
+     * @return count
      */
     @Override
     public int size() {
@@ -186,6 +188,7 @@ public class HashMapImpl <K, V> implements Map<K, V> {
 
     /**
      * this method returns all values
+     *
      * @return value
      */
     @Override
@@ -206,5 +209,38 @@ public class HashMapImpl <K, V> implements Map<K, V> {
     @Override
     public Set<Entry<K, V>> entrySet() {
         return null;
+    }
+
+    /**
+     * this method returns an array
+     *
+     * @return nodes
+     */
+    public Object[] toArray() {
+        Node[] nodes = new Node[count];
+        for (int i = 0; i < table.length - 1; i++) {
+            NodeHashMap<K, V> current = table[i];
+            while (current.getNext() != null) {
+                nodes[i] = (Node) current;
+                current = current.getNext();
+            }
+        }
+        return nodes;
+    }
+
+    public boolean retainAll(Collection<?> c) {
+        for (int i = 0; i < table.length - 1; i++) {
+            NodeHashMap<K, V> current = table[i];
+            if (!containsKey(current.getKey())) {
+                remove(current.getKey());
+            }
+            while (current.getNext() != null) {
+                current = current.getNext();
+                if (!containsKey(current.getKey())) {
+                    remove(current.getKey());
+                }
+            }
+        }
+        return true;
     }
 }

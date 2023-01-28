@@ -1,10 +1,10 @@
 
-public class NodeHashSet<V> {
+public class NodeHashSet<K> {
     final int hash;
-    final V key;
-    NodeHashSet<V> nextNodeHashSet;
+    final K key;
+    NodeHashSet<K> nextNodeHashSet;
 
-    public NodeHashSet(int hash, V key) {
+    public NodeHashSet(int hash, K key) {
         this.hash = hash;
         this.key = key;
     }
@@ -13,15 +13,15 @@ public class NodeHashSet<V> {
         return hash;
     }
 
-    public V getKey() {
+    public K getKey() {
         return key;
     }
 
-    public NodeHashSet<V> getNextNode() {
+    public NodeHashSet<K> getNextNode() {
         return nextNodeHashSet;
     }
 
-    public void setNextNode(NodeHashSet<V> nextNodeHashSet) {
+    public void setNextNode(NodeHashSet<K> nextNodeHashSet) {
         this.nextNodeHashSet = nextNodeHashSet;
     }
 }

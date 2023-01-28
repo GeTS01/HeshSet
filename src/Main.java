@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
-    static HashSetImpl<String, Integer> hashSet = new HashSetImpl();
+    static HashSetImpl<String> hashSet = new HashSetImpl();
 
     public static void main(String[] args) {
         menu();
@@ -22,7 +22,7 @@ public class Main {
                     "7) Проверить наличие коллекции в списке\n" +
                     "8) Добавить колллекцию в список\n" +
                     "9) Удалить список\n" +
-                    "10)Удалить весь список" +
+                    "10)Удалить весь список\n" +
                     "11)Переделать в массив");
             System.out.println();
             System.out.println("Выберите действие");
@@ -108,7 +108,7 @@ public class Main {
                 "Удалить переданную коллекцию");
         int number = scanner1.nextInt();
         if (number == 1) {
-            hashSet.containsAll(map);
+            hashSet.retainAll(map);
         } else if (number == 2) {
             hashSet.removeAll(map);
         } else {
